@@ -1,0 +1,390 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://scripts/World.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Gardener.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Terrain.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/PatrickHand-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://scripts/Control.gd" type="Script" id=5]
+[ext_resource path="res://scenes/Field.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Field2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scripts/HTTPRequest.gd" type="Script" id=8]
+[ext_resource path="res://scenes/HTTPRequest2.gd" type="Script" id=9]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.290196, 0.737255, 0.8, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.709804, 0.694118, 0.294118, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.290196, 0.737255, 0.8, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.8, 0.8, 0.8, 0 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="DynamicFont" id=10]
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.176471, 0.164706, 0.164706, 1 )
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="DynamicFont" id=8]
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.207843, 0.54902, 0.686275, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="DynamicFont" id=9]
+size = 18
+use_filter = true
+font_data = ExtResource( 4 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="World" type="Node2D" parent="."]
+editor/display_folded = true
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="World"]
+margin_right = 1080.0
+margin_bottom = 600.0
+color = Color( 0.141176, 0.411765, 0.164706, 1 )
+
+[node name="Food" type="Node2D" parent="World"]
+
+[node name="Nests" type="Node2D" parent="World"]
+
+[node name="Ants" type="Node2D" parent="World"]
+
+[node name="Gardener" type="Node2D" parent="World"]
+script = ExtResource( 2 )
+
+[node name="Terrain" type="YSort" parent="World"]
+
+[node name="Tree" parent="World/Terrain" instance=ExtResource( 3 )]
+position = Vector2( 45.2549, 151.321 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="Tree8" parent="World/Terrain" instance=ExtResource( 3 )]
+position = Vector2( 865.5, 421.436 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="Tree2" parent="World/Terrain" instance=ExtResource( 3 )]
+position = Vector2( 190.919, 383.252 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="Tree6" parent="World/Terrain" instance=ExtResource( 3 )]
+position = Vector2( 961.667, 272.944 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="Tree3" parent="World/Terrain" instance=ExtResource( 3 )]
+position = Vector2( 91.924, 282.843 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Tree7" parent="World/Terrain" instance=ExtResource( 3 )]
+position = Vector2( 1013.99, 478.005 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Tree9" parent="World/Terrain" instance=ExtResource( 3 )]
+position = Vector2( 1059.25, 219.203 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="Tree4" parent="World/Terrain" instance=ExtResource( 3 )]
+position = Vector2( 113.137, 86.2671 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Tree5" parent="World/Terrain" instance=ExtResource( 3 )]
+position = Vector2( 1197.84, 434.164 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="WinnerLabel" type="Label" parent="World"]
+margin_left = 627.767
+margin_top = 18.6866
+margin_right = 847.767
+margin_bottom = 69.6866
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.619608, 0.192157, 0.188235, 1 )
+align = 1
+valign = 1
+
+[node name="Team1AntsLabel" type="Label" parent="World"]
+margin_left = 187.0
+margin_top = 16.0
+margin_right = 407.0
+margin_bottom = 66.0
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Team 1 Ants: 1"
+align = 1
+valign = 1
+
+[node name="Team1AntsLabel2" type="Label" parent="World"]
+margin_left = 304.0
+margin_top = 64.0
+margin_right = 409.0
+margin_bottom = 97.0
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Player: 8208"
+align = 1
+valign = 1
+
+[node name="Team2AntsLabel" type="Label" parent="World"]
+margin_left = 627.767
+margin_top = 15.8581
+margin_right = 847.767
+margin_bottom = 66.8581
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.619608, 0.192157, 0.188235, 1 )
+text = "Team 2 Ants: 1"
+align = 1
+valign = 1
+
+[node name="Team2AntsLabel2" type="Label" parent="World"]
+margin_left = 740.0
+margin_top = 67.0
+margin_right = 847.0
+margin_bottom = 101.0
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Computer"
+align = 1
+valign = 1
+
+[node name="Control" type="Control" parent="."]
+editor/display_folded = true
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 5 )
+
+[node name="bg1" type="Label" parent="Control"]
+margin_left = 7.0
+margin_top = 12.0
+margin_right = 207.0
+margin_bottom = 594.0
+custom_styles/normal = SubResource( 3 )
+
+[node name="Text0" type="Label" parent="Control"]
+margin_left = 96.0001
+margin_top = 21.0
+margin_right = 273.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 8 )
+text = "Upgrade ants:"
+autowrap = true
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = 122.0
+margin_top = 49.0
+margin_right = 154.0
+margin_bottom = 71.0
+custom_styles/normal = SubResource( 2 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="Speed" parent="Control" instance=ExtResource( 6 )]
+margin_left = 119.071
+margin_top = 73.6328
+margin_right = 158.071
+margin_bottom = 101.633
+
+[node name="Vision" parent="Control" instance=ExtResource( 6 )]
+margin_left = 119.071
+margin_top = 140.502
+margin_right = 158.071
+margin_bottom = 168.502
+title = "Vision"
+
+[node name="Health" parent="Control" instance=ExtResource( 6 )]
+margin_left = 119.071
+margin_top = 272.252
+margin_right = 158.071
+margin_bottom = 300.252
+title = "Health"
+
+[node name="Damage" parent="Control" instance=ExtResource( 6 )]
+margin_left = 119.071
+margin_top = 204.752
+margin_right = 158.071
+margin_bottom = 232.752
+title = "Damage"
+
+[node name="FoodCap" parent="Control" instance=ExtResource( 6 )]
+margin_left = 119.071
+margin_top = 471.752
+margin_right = 158.071
+margin_bottom = 499.752
+title = "Carrying"
+
+[node name="ScoutRange" parent="Control" instance=ExtResource( 6 )]
+margin_left = 119.071
+margin_top = 405.752
+margin_right = 158.071
+margin_bottom = 433.752
+title = "Scouting"
+
+[node name="Lifespan" parent="Control" instance=ExtResource( 6 )]
+margin_left = 119.071
+margin_top = 333.752
+margin_right = 158.071
+margin_bottom = 361.752
+title = "Lifespan"
+
+[node name="Aggressive" parent="Control" instance=ExtResource( 6 )]
+margin_left = 119.071
+margin_top = 540.935
+margin_right = 158.071
+margin_bottom = 568.935
+title = "Aggressive"
+
+[node name="bg2" type="Label" parent="Control"]
+margin_left = 218.0
+margin_top = 12.0
+margin_right = 418.0
+margin_bottom = 416.0
+custom_styles/normal = SubResource( 3 )
+
+[node name="Text1" type="Label" parent="Control"]
+margin_left = 231.707
+margin_top = 24.6862
+margin_right = 408.707
+margin_bottom = 80.6862
+custom_fonts/font = SubResource( 8 )
+text = "Distance new nest must be from existing friendly nests:"
+autowrap = true
+
+[node name="NestRange" parent="Control" instance=ExtResource( 7 )]
+margin_left = 325.27
+margin_top = 99.1078
+margin_right = 364.27
+margin_bottom = 127.108
+value = 300
+title = "Nest Range"
+increment = 10
+max_val = 1000
+
+[node name="Text2" type="Label" parent="Control"]
+margin_left = 228.879
+margin_top = 157.622
+margin_right = 405.879
+margin_bottom = 213.622
+custom_fonts/font = SubResource( 8 )
+text = "Ants that must exist before spawning Queen:"
+autowrap = true
+
+[node name="AntsPerQueen" parent="Control" instance=ExtResource( 7 )]
+margin_left = 322.441
+margin_top = 232.044
+margin_right = 361.441
+margin_bottom = 260.044
+value = 2
+title = "Courtiers"
+max_val = 50
+
+[node name="Text3" type="Label" parent="Control"]
+margin_left = 231.0
+margin_top = 282.781
+margin_right = 408.0
+margin_bottom = 338.781
+custom_fonts/font = SubResource( 8 )
+text = "Excess food available in nest before Queen spawns:"
+autowrap = true
+
+[node name="ExcessFoodPerQueen" parent="Control" instance=ExtResource( 7 )]
+margin_left = 323.855
+margin_top = 355.081
+margin_right = 362.855
+margin_bottom = 383.081
+title = "Ex. Food"
+max_val = 500
+
+[node name="ExportButton" type="Button" parent="Control"]
+margin_left = 225.0
+margin_top = 427.0
+margin_right = 411.0
+margin_bottom = 504.0
+custom_fonts/font = SubResource( 9 )
+text = "Export Ants with ID: 8208"
+
+[node name="ImportButton" type="Button" parent="Control"]
+margin_left = 223.343
+margin_top = 512.526
+margin_right = 408.343
+margin_bottom = 581.526
+custom_fonts/font = SubResource( 9 )
+text = "Import Ants from ID:"
+
+[node name="ImportInput" type="LineEdit" parent="Control"]
+margin_left = 424.0
+margin_top = 532.0
+margin_right = 490.0
+margin_bottom = 573.0
+text = "0"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 13.0
+margin_top = 16.0
+margin_right = 53.0
+margin_bottom = 49.0
+text = "O"
+
+[node name="Button2" type="Button" parent="."]
+visible = false
+margin_left = 1361.75
+margin_top = 49.25
+margin_right = 1394.75
+margin_bottom = 76.25
+text = "O"
+
+[node name="Button3" type="Button" parent="."]
+visible = false
+margin_left = 1363.75
+margin_top = 83.2501
+margin_right = 1396.75
+margin_bottom = 110.25
+text = "O"
+
+[node name="HTTPRequestImport" type="HTTPRequest" parent="."]
+script = ExtResource( 8 )
+
+[node name="HTTPRequestExport" type="HTTPRequest" parent="."]
+script = ExtResource( 9 )
+[connection signal="button_up" from="Control/ExportButton" to="HTTPRequestExport" method="_on_ExportButton_button_up"]
+[connection signal="button_up" from="Control/ImportButton" to="HTTPRequestImport" method="_on_Button5_button_up"]
+[connection signal="button_up" from="Button" to="Control" method="_on_Button_button_up"]
+[connection signal="button_up" from="Button2" to="World" method="_on_Button2_button_up"]
+[connection signal="button_up" from="Button3" to="World" method="_on_Button3_button_up"]
