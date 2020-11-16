@@ -18,5 +18,8 @@ func _http_request_completed(result, response_code, headers, body):
 			world.get_node('Team2AntsLabel2').text = 'Player: ' + str(resp["player_id"])
 
 func _on_Button5_button_up():
-	self.connect("request_completed", self, "_http_request_completed")
-	var error = self.request(search_url)
+	if OS.get_name()=="HTML5":
+		get_parent().get_node("Control/HTMLLabel").visible = true
+	else:
+		self.connect("request_completed", self, "_http_request_completed")
+		var error = self.request(search_url)

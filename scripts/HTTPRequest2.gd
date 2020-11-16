@@ -1,9 +1,13 @@
 extends HTTPRequest
 
 var logger_url = 'http://users.ox.ac.uk/cgi-bin/safeperl/sann5290/test.pl'
-
-func _on_Button4_button_up():
-	self.send_data({'one':'1'})
+#
+#func _on_Button4_button_up():
+#	if OS.get_name()=="HTML5":
+#		get_parent().get_node("Control/HTMLLabel").visible = true
+#	else:
+#		get_parent().get_node("Control/HTMLLabel").visible = true
+##		self.send_data({'one':'1'})
 
 
 func send_data(message=null):
@@ -15,7 +19,8 @@ func send_data(message=null):
 func _make_post_request(url, data_to_send, use_ssl):
 	var query = _format_request(data_to_send)
 	print(query)
-	var headers = ["Content-Type: application/x-www-form-urlencoded", 'Content-Length: '+ str(query.length())]
+	var headers = ["Content-Type: application/x-www-form-urlencoded"] # Content-Length not included due to html5 security issues.
+#	var headers = ["Content-Type: application/x-www-form-urlencoded", 'Content-Length: '+ str(query.length())]
 	var _result = self.request(url, headers, use_ssl, HTTPClient.METHOD_POST, query)
 	print(_result)
 
@@ -33,11 +38,14 @@ func _format_request(query_dict):
 
 
 func _on_ExportButton_button_up():
-	var world = get_parent().get_node("World")
-	var data = {}
-	data['player_id'] = world.player_id
-	for key in world.civ_stats_t1:
-		data[key] = world.civ_stats_t1[key]
-	for key in world.t1_stats_dict:
-		data[key] = world.t1_stats_dict[key]
-	self.send_data(data)
+	if OS.get_name()=="HTML5":
+		get_parent().get_node("Control/HTMLLabel").visible = true
+	else:
+		var world = get_parent().get_node("World")
+		var data = {}
+		data['player_id'] = world.player_id
+		for key in world.civ_stats_t1:
+			data[key] = world.civ_stats_t1[key]
+		for key in world.t1_stats_dict:
+			data[key] = world.t1_stats_dict[key]
+		self.send_data(data)

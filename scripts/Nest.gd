@@ -63,7 +63,6 @@ func _process(delta):
 
 func nest_birthday():
 	nest_age += 1
-	$Layers
 	$Layers/layer1.visible = true
 	$Layers/layer2.visible = true
 	$Layers/layer3.visible = false
